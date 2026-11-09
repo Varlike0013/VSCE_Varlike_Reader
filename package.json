@@ -1,0 +1,76 @@
+{
+  "name": "varlikereader",
+  "displayName": "VarlikeReader",
+  "description": "a reader of file",
+  "publisher": "Varlike0013",
+  "version": "0.0.1",
+  "activationEvents": [],
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+    "contributes": {
+      "viewsContainers": {
+          "activitybar": [
+              {
+                  "id": "varlikereader-container",
+                  "title": "VarlikeReader",
+                  "icon": "media/icon.svg"
+              }
+          ]
+      },
+      "views": {
+          "varlikereader-container": [
+              {
+                  "icon": "media/icon.svg",
+                  "id": "varlikereader.home",
+                  "type": "webview",
+                  "name": "Reader"
+              }
+          ]
+      },
+      "customEditors": [
+          {
+              "viewType": "varlikereader.txtReader",
+              "displayName": "VarlikeReader",
+              "selector": [{ "filenamePattern": "*.txt" }],
+              "priority": "option"
+          }
+      ],
+      "commands": [
+          {
+              "command": "varlikereader.openPanel",
+              "title": "VarlikeReader"
+          }
+      ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "typescript-eslint": "^8.61.1",
+    "eslint": "^10.5.0",
+    "typescript": "^6.0.3",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  },
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/varlike0013/varlikereader.git"
+  }
+}
